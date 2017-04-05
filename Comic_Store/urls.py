@@ -20,11 +20,13 @@ from django.views.static import serve
 from main import urls as urlsMain
 from accounts import urls as urlsAccounts
 from Characters import urls as urlsCharacters
+from comics import urls as urlsComics
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urlsAccounts, namespace='accounts')),
     url(r'^characters/', include(urlsCharacters, namespace='characters')),
+    url(r'^comics/', include(urlsComics, namespace="comics")),
     url(r'^', include(urlsMain)),
     url(
     	regex= r'^media/(?P<path>.*)$',

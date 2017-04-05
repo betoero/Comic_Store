@@ -38,12 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-    
-=======
     'main',
     'Characters',
->>>>>>> 05d2039be7e01629722b943f7731523307ae8f07
+    'comics',
 ]
 
 MIDDLEWARE = [
