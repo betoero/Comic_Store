@@ -1,1 +1,12 @@
-list_comics.html
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% for com in comics  %}
+		<h4>{{ com.title }}</h4>
+		<p>
+			<img class="img-responsive" src="{{com.image.url}}">
+		</p>
+		<h5>Price: {{com.price}}</h5>
+	{% endfor %}
+{% endblock content %}
