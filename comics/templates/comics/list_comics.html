@@ -3,10 +3,23 @@
 {% block content %}
 
 	{% for com in comics  %}
-		<h4>{{ com.title }}</h4>
+		<h5>{{ com.title }}</h5>
 		<p>
-			<img class="img-responsive" src="{{com.image.url}}">
+			<img src="{{com.image.url }}" class="thumnail">
 		</p>
 		<h5>Price: {{com.price}}</h5>
 	{% endfor %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-2">
+				<h2 class="text-center">Companies</h2>
+				<div class="list-group">
+				  <a href="{% url 'comics:list_comics'%}" class="list-group-item {% if not company %} active {% endif %}">Todos</a>
+				  <form action="." method="post">
+				  {% for com in company %}
+				  	<a href="{{ com.get_absolute_url }}" class="list-group-item {% if company_slug == com.slug %} active {% endif %}">{{ com.name }}</a>
+				  {% endfor %}
+				</div>
+			</div>
 {% endblock content %}
