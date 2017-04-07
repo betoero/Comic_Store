@@ -1,4 +1,4 @@
-{# {% extends 'base_dos.html'%}
+{% extends 'base.html'%}
 
 {% block title %}
 	Login
@@ -20,7 +20,7 @@
 		<p>Ingresa tu usario y contraseña</p>
 	{% endif %}
 
-	<div class="login-form container">
+	{# <div class="login-form container">
 		<form action="{% url 'accounts:login' %}" method="post">
 			{% csrf_token %}
 			{{ form.as_p }}
@@ -33,6 +33,6 @@
 		<p>
 			<h3>Si quieres puedes entrar con tu cuenta de Twitter <a href="{% url 'social:begin' 'twitter' %}" class="button"><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></h3>
 		</p>
-		<h5>Si aun no tienes una cuenta, puedes crear una  <a href="{% url 'accounts:registry' %}"><button>Registrarse</button></a></h5>
+	 #}	<h5>Si aun no tienes una cuenta, puedes crear una  <a href="{% url 'accounts:registry' %}"><button>Registrarse</button></a></h5>
 	</div>
 {% endblock content %} #}
