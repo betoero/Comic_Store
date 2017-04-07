@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^comics/', include(urlsComics, namespace="comics")),
     url(r'^', include(urlsMain)),
     url(
-    	regex= r'^media/(?P<path>.*)$',
-    	view = serve,
-    	kwargs={'document_root':settings.MEDIA_ROOT}),
+        regex= r'^media/(?P<path>.*)$',
+        view = serve,
+        kwargs={'document_root':settings.MEDIA_ROOT}),
 ]
