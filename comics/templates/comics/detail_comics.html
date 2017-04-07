@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ comics.title }}
+{% endblock title %}
+
+{% block content %}
+	<h1>{{ comics.title }}</h1>
+	<p>
+		<img src="{{ comics.image.url }}" width="300">
+	</p>
+	{{comics.company.name}}
+{% endblock content %}
+
