@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid">
 
 	{% for com in comics  %}
+	<div class="col-sm-12 col-md-8 text-center">
 		<h5>{{ com.title }}</h5>
-		<p>
-			<img src="{{com.image.url }}" class="thumnail">
-		</p>
+			<a href="{{ com.get_absolute_url }}" class="thumnail">
+				<p>
+					<img src="{{ com.image.url }}"class="img img-responsive" width="200">
+				</p>
+				</a>
 		<h5>Price: {{com.price}}</h5>
 	{% endfor %}
+	</div>
 
 	<div class="container">
 		<div class="row">
@@ -20,6 +25,21 @@
 				  {% for com in company %}
 				  	<a href="{{ com.get_absolute_url }}" class="list-group-item {% if company_slug == com.slug %} active {% endif %}">{{ com.name }}</a>
 				  {% endfor %}
+				  </form>
+				</div>
+			</div>
+</div>
+<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-2">
+				<h2 class="text-center">Categories</h2>
+				<div class="list-group">
+				  <a href="{% url 'comics:list_comics'%}" class="list-group-item {% if not category %} active {% endif %}">Todos</a>
+				  <form action="." method="post">
+				  {% for c in categories %}
+				  	<a href="{{ c.get_absolute_url }}" class="list-group-item {% if category_slug == c.slug %} active {% endif %}">{{ c.name }}</a>
+				  {% endfor %}
+				  </form>
 				</div>
 			</div>
 {% endblock content %}
