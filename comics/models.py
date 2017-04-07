@@ -39,8 +39,8 @@ class Category(models.Model):
 
 class Comic(models.Model):
 	title = models.CharField(max_length=100, db_index=True)
-	company = models.ManyToManyField(Company, related_name='company_comic', blank=True)
-	category = models.ManyToManyField(Category, related_name='category_comic', blank=True)
+	company = models.ForeignKey(Company, related_name='company_comic', blank=True)
+	category = models.ForeignKey(Category, related_name='category_comic', blank=True)
 	slug = models.SlugField(max_length=200)
 	date = models.DateField(blank = True, null = True)
 	image = models.ImageField(upload_to='comics/%Y/%m/%d', blank=True)
