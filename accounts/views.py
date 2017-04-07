@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import views
+from django.views.generic import View
 from .forms import UserRegistrationForm, ProfileForm
-from django.contrib.auth.models import UserRegistrationForm
+from django.contrib.auth.models import User
 from .models import Profile
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -24,14 +24,14 @@ class RegistryView(View):
 		form_user = ProfileForm()
 		context = {
 			'form':form,
-			'form_user':form:user,
+			'form_user':form_user,
 		}
 		return render(request, template_name, context)
 	def post(self, request):
 		template_name = "accounts/registration.html"
 		new_user_form = UserRegistrationForm(request.POST)
 		new_user_photo = ProfileForm(request.POST, request.FILES)
-		if new_user_form.is_valid() and new_user_photo.is_valid()
+		if new_user_form.is_valid() and new_user_photo.is_valid():
 			new_user = new_user_form.save(commit=False)
 			new_photo = new_user_photo.save(commit=False)
 			new_user.set_password(new_user_form.cleaned_data['password2'])
