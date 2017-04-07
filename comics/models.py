@@ -16,8 +16,9 @@ class Company(models.Model):
 	def __str__(self):
 		return self.name
 
-	# def get_absolute_url(self):
-	# 	return reverse('catalogo:detail_movie', args=[self.id, self.slug])
+	def get_absolute_url(self):
+		return reverse('comics:comics_list_company', args=[self.slug])
+	
 
 
 class Category(models.Model):
@@ -32,6 +33,9 @@ class Category(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return reverse('comics:comics_list_category', args=[self.slug])
 
 class Comic(models.Model):
 	title = models.CharField(max_length=100, db_index=True)
@@ -50,7 +54,7 @@ class Comic(models.Model):
 	def __str__(self):
 		return self.title
 
-	# def get_absolute_url(self):
-	# 	return reverse('catalogo:detail_movie', args=[self.id, self.slug])
+	def get_absolute_url(self):
+		return reverse('comics:detail_comics', args=[self.id, self.slug])
 
 
