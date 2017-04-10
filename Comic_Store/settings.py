@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main',
     'Characters',
     'comics',
+    'social.app.django_app.default',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,19 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+        'accounts.authentication.EmailAuthBackend',
+        'accounts.authentication.TelAuthBackend',
+        'social.backends.facebook.Facebook20Auth2',
+        'social.backends.twitter.Twitter0Auth',
+    )
+
+SOCIAL_AUTH_FACEBOOK_KEY = '187809485060107'
+SOCIAL_AUTH_FACEBOOK_SECRET = '266be0c175f93de13a60b266e4047b09'
+
+SOCIAL_AUTH_TWITTER_KEY = 'WHDSwjVBStd0brNrbA24BBzbz'
+SOCIAL_AUTH_TWITTER_SECRET = '  37IHmY8NYFLt25RlpHRnWR44RgkqA8OcjdAJ0arorCXTle5WA4'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE= ['email']
