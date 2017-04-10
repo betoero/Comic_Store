@@ -27,7 +27,12 @@
 			<input type="hidden" name="next" value="{{ next }}">
 			<input type="submit" name="" value="Iniciar Sesión">
 		</form>
-	</div>
-	<h5>Si aun no tienes una cuenta, puedes crear una  <a href="{% url 'accounts:registry' %}"><button>Registrarse</button></a></h5>
+		<p>
+			<h3>Si quieres puedes entrar con tu cuenta de FACEBOOK <a href="{% url 'social:begin''facebook' %}" class="button"><i class="fa fa -facebook-square" aria-hidden="true"></i>Facebook</a></h3>
+		</p>
+		<p>
+			<h3>Si quieres puedes entrar con tu cuenta de Twitter <a href="{% url 'social:begin' 'twitter' %}" class="button"><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></h3>
+		</p>
+		<h5>Si aun no tienes una cuenta, puedes crear una  <a href="{% url 'accounts:registry' %}"><button>Registrarse</button></a></h5>
 	</div>
 {% endblock content %} #}
