@@ -5,10 +5,41 @@
 {% endblock title %}
 
 {% block content %}
-	<h1>{{ comics.title }}</h1>
+<style type="text/css">
+IMG.imgcenter{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border:none;
+      }
+</style>
+
+<div class="text-center">
+	<h4 align="center">{{ comics.title }}</h4>
+
+	<h5 align="center">Series: {{ comics.category.name }}</h5>
 	<p>
-		<img src="{{ comics.image.url }}" width="300">
+		<img src="{{ comics.image.url }}" width="300" class="imgcenter">
 	</p>
-	{{comics.company.name}}
+	<h6 align="center">Company: {{comics.company.name}} </h6>
+	
+		<h6 align="center">Autor {{comics.author}} </h6>
+		<P ALIGN=center>
+		{{comics.description}}
+		</p>
+		<h6 align="center">Price: {{comics.price}}</h6>
+	
+	</div>
 {% endblock content %}
+
+title = models.CharField(max_length=100, db_index=True)
+	company = models.ForeignKey(Company, related_name='company_comic', blank=True)
+	category = models.ForeignKey(Category, related_name='category_comic', blank=True)
+	slug = models.SlugField(max_length=200)
+	date = models.DateField(blank = True, null = True)
+	image = models.ImageField(upload_to='comics/%Y/%m/%d', blank=True)
+	author = models.CharField(max_length=100, db_index=True)
+	price = models.DecimalField(max_digits=4, decimal_places=2)
+	description = models.CharField(max_length=1000, db_index=True, blank=True)
+
 

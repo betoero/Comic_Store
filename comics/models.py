@@ -44,8 +44,9 @@ class Comic(models.Model):
 	slug = models.SlugField(max_length=200)
 	date = models.DateField(blank = True, null = True)
 	image = models.ImageField(upload_to='comics/%Y/%m/%d', blank=True)
-	autor = models.CharField(max_length=100, db_index=True)
+	author = models.CharField(max_length=100, db_index=True)
 	price = models.DecimalField(max_digits=4, decimal_places=2)
+	description = models.CharField(max_length=1000, db_index=True, blank=True)
 
 	class Meta:
 		ordering=('title',)

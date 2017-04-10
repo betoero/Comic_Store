@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
 from.models import Category, Company, Comic
 from django.utils.decorators import method_decorator
+from .forms import ComicForm, CategoryForm
 
 
 # Create your views here.
@@ -39,3 +40,56 @@ class DetailComics(View):
 			'company':company,
 		}
 		return render(request, template_name, context)
+
+class NewComic(View):
+	def post(self, request):
+		template_name = 'comics/new_comic.html'
+		comic_form = ComicForm(request.POST, request.FILES)
+		comic_form_list = ComicForm()
+		if comic_form.is_valid():
+			new_comic = comic_form.save(commit=False)
+			new_comic.user_movie = request.user
+			new_movie.save()
+			return redirect('comics:list_comics')
+		else:
+			context = {
+				'comic_form_list':comic_form_list, 
+
+			}
+		return render(request, template_name, context)
+
+	def get (self, request):
+		template_name = 'comics/new_comic.html'
+		comic_form = ComicForm()
+		category_form = CategoryForm()
+		context = {
+			'comic_form':comic_form,
+			'category_form':category_form,
+		}
+		return render (request, template_name, context)
+
+
+
+# class NewMovie(View):
+# 	def post (self, request):
+# 		template_name = 'catalogo/new-movie.html'
+# 		movie_form = MovieForm(request.POST, request.FILES)
+# 		movie_form_list =  MovieForm()
+# 		if movie_form.is_valid():
+# 			new_movie = movie_form.save(commit=False)
+# 			new_movie.user_movie = request.user
+# 			new_movie.save()
+# 			return redirect('catalogo:list-movies')
+# 		else:
+# 			context = {
+# 				'movie_form_list': movie_form_list,
+# 			}
+# 		return render (request, template_name, context)
+
+# 	def get (self, request):
+# 		template_name = 'catalogo/new-movie.html'
+# 		movie_form = MovieForm()
+# 		context = {
+# 			'movie_form':movie_form, 
+# 		}
+# 		return render(request, template_name, context)

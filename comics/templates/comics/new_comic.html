@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<form action="." method="post" enctype='multipart/form-data'>
+						{% csrf_token %}
+						{{ comic_form.as_p }}
+						{{category_form.as_p}}
+						<p><input type="submit" name="" value="Agregar"> </p>
+
+{% endblock content %}

@@ -11,7 +11,7 @@ class CategoryAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug':('name',),}
 
 class ComicAdmin(admin.ModelAdmin):
-	list_display = ['title', 'slug', 'date', 'autor', 'price']
+	list_display = ['title', 'slug', 'date', 'author', 'price', 'description']
 	prepopulated_fields = {'slug':('title',),}
 
 admin.site.register(Company, CompanyAdmin)

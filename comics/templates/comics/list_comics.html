@@ -3,7 +3,6 @@
 {% block content %}
 <div class="container">
 		<div class="row">
-
 			<div class="col-sm-10 col-md-2">
 				<h2 class="text-center">Categories</h2>
 				<div class="list-group">
@@ -14,31 +13,6 @@
 				  	<br>
 				  {% endfor %}
 				  </form>
-			
-
-
-
-
-
-	{% for comic in comics %}
-							<div class="col-sm-12 col-md-4">
-							<a href="{{ comic.get_absolute_url }}" class="thumnail">
-								<p>
-									<img img class="img-responsive" src="{{ comic.image.url }}" width="300">
-								</p>
-								<p>
-									<h3>{{ comic.title }}</h3>
-								</p>
-								<br>
-								<br>
-								<br>
-							</a>
-							</div>
-						{% endfor %}
-
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 col-md-2">
 				<h2 class="text-center">Companies</h2>
 				<div class="list-group">
 				  <a href="{% url 'comics:list_comics'%}" class="list-group-item {% if not company %} active {% endif %}">Todos</a>
@@ -49,9 +23,34 @@
 				  {% endfor %}
 				  </form>
 				</div>
-			</div>
-</div>
-</div>
+<style type="text/css">
+IMG.imgcenter{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border:none;
+      }
+</style>
+
+
+	{% for comic in comics %}
+							<div class="col-sm-10 col-md-4">
+							<a href="{{ comic.get_absolute_url }}" class="thumnail" >
+							<p>
+									<h5 >{{ comic.title }}</h5>
+							</p>
+								<p>
+									<img img class="img-responsive" src="{{ comic.image.url }}" width="250">
+								</p>
+								
+								<br>
+								<br>
+								<br>
+							</a>
+							</div>
+						{% endfor %}
+
+
 
 	</div>
 	</div>
